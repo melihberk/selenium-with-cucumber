@@ -6,6 +6,7 @@ import utils.Assertions;
 import base.DriverFactory;
 import utils.ElementUtils;
 
+import static utils.Assertions.*;
 import static utils.elementStore.BasketElements.*;
 import static utils.elementStore.ProductElements.*;
 
@@ -19,11 +20,7 @@ public class AssertSteps {
     @Then("{string} elementi görünür olmalıdır")
     public void elementi_gorunur_olmalidir(String elementKey) {
         By locator = getLocatorByKey(elementKey);
-        boolean visible = ElementUtils.isVisible(locator);
-        if (!visible) {
-            throw new AssertionError("❌ '" + elementKey + "' elementi görünür değil!");
-        }
-        System.out.println("✅ '" + elementKey + "' elementi başarıyla doğrulandı.");
+        verifyElementVisible(locator, elementKey); // Utils'e taşıdık
     }
 
     private By getLocatorByKey(String key) {

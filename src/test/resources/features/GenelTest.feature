@@ -10,7 +10,7 @@ Feature: Trendyol Genel Test
     And Yüksek puanlı ürünler filtresi tıklanır
     And Listelenen ürünlerden rastgele biri seçilir
     And Konum seç bilgilendirme mesajı kapatılır
-    Then "Ürün Başlığı" elementi görünür olmalıdır
+    Then "ürün başlığı" elementi görünür olmalıdır
     And "Sepete Ekle Butonu" elementi görünür olmalıdır
     And Sepete ekle butonuna tıklanır
     And Sepete gidilir
