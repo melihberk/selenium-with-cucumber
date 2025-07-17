@@ -22,16 +22,16 @@ jobs:
       - name: Run Tests with Maven
         run: mvn clean test
 
+      - name: Generate Allure HTML report
+        run: |
+          npm install -g allure-commandline --save-dev
+          allure generate target/allure-results --clean -o target/allure-report
+
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: target/allure-results
-
-      - name: Generate Allure HTML report
-        run: |
-          npm install -g allure-commandline --save-dev
-          allure generate target/allure-results --clean -o target/allure-report
 
       - name: Upload Allure HTML Report
         uses: actions/upload-artifact@v4
@@ -39,3 +39,8 @@ jobs:
           name: allure-html-report
           path: target/allure-report
 
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/allure-report
