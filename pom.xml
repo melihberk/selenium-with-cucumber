@@ -29,6 +29,13 @@
             <version>${selenium.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>4.16.1</version>
+        </dependency>
+
+
         <!-- Cucumber -->
         <dependency>
             <groupId>io.cucumber</groupId>

@@ -3,6 +3,7 @@ package base;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import utils.ConfigReader;
 import org.slf4j.Logger;
@@ -39,7 +40,13 @@ public class DriverFactory {
                 switch (browserName) {
                     case "chrome":
                         WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver();
+                        ChromeOptions options = new ChromeOptions();
+                        options.addArguments("--no-sandbox");
+                        options.addArguments("--disable-dev-shm-usage");
+                        options.addArguments("--disable-gpu");
+                        options.addArguments("--headless=new"); // Modern headless
+                        options.addArguments("--remote-allow-origins=*");
+                        driver = new ChromeDriver(options);
                         break;
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
