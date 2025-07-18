@@ -30,7 +30,7 @@ public class Hooks {
         }
 
         // 👇 Tarayıcı açık kalsın mı? true ise kapatma
-        boolean KEEP_BROWSER_OPEN = true;
+        boolean KEEP_BROWSER_OPEN = false;
         if (!KEEP_BROWSER_OPEN) {
             DriverFactory.quitDriver();
         } else {
