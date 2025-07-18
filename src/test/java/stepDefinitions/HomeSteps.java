@@ -13,7 +13,7 @@ public class HomeSteps {
 
     @Given("Kullanıcı ana sayfaya gider ve çerezleri kabul eder")
     public void kullanici_trendyol_sayfasina_gider() {
-        DriverFactory.getDriver().get("https://www.trendyol.com");
+        DriverFactory.getDriver();
         homePage.acceptCookiesIfPresent();
     }
 
