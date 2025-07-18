@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.HomePage;
+import utils.ConfigReader;
 import utils.ExcelUtils;
 
 public class HomeSteps {
@@ -13,7 +14,7 @@ public class HomeSteps {
 
     @Given("Kullanıcı ana sayfaya gider ve çerezleri kabul eder")
     public void kullanici_trendyol_sayfasina_gider() {
-        DriverFactory.getDriver().get("https://www.trendyol.com");
+        DriverFactory.getDriver().get(ConfigReader.getProperty("baseUrl"));
         homePage.acceptCookiesIfPresent();
     }
 

@@ -22,8 +22,8 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: 🔁 Override browser to Firefox
-        run: echo "browser=firefox" > src/test/resources/config.properties
+      - name: 🔁 Override browser to Firefox (preserving other configs)
+        run: sed -i 's/^browser=.*/browser=firefox/' src/test/resources/config.properties
 
       - name: Run Tests with Maven
         run: mvn clean test
