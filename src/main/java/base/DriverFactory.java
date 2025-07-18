@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import utils.ConfigReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,10 +49,17 @@ public class DriverFactory {
                         options.addArguments("--remote-allow-origins=*");
                         driver = new ChromeDriver(options);
                         break;
+
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
-                        driver = new FirefoxDriver();
+                        FirefoxOptions firefoxOptions = new FirefoxOptions();
+                        firefoxOptions.addArguments("--headless"); // Headless mod (CI için zorunlu)
+                        firefoxOptions.addArguments("--disable-gpu");
+                        firefoxOptions.addArguments("--no-sandbox");
+                        firefoxOptions.addArguments("--disable-dev-shm-usage");
+                        driver = new FirefoxDriver(firefoxOptions);
                         break;
+
                     default:
                         throw new RuntimeException("Geçersiz browser: " + browserName);
                 }
