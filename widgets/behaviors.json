@@ -1,1 +1,1 @@
-{"total":2,"items":[{"uid":"70617c2dadd67aacf3595189b396b036","name":"Trendyol Genel Test","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}},{"uid":"64c77ecae877bcb173fbaf09ef971b92","name":"Genel Test Excel Kullanımı","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
+{"total":1,"items":[{"uid":"70617c2dadd67aacf3595189b396b036","name":"Trendyol Genel Test","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}}]}
