@@ -1,11 +1,9 @@
 package hooks;
 
 import base.DriverFactory;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import io.cucumber.java.Scenario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,6 +17,17 @@ public class Hooks {
         DriverFactory.getDriver(); // Driver başlatılıyor
     }
 
+    @AfterStep
+    public void afterEachStep(Scenario scenario) {
+        try {
+            byte[] screenshot = ((TakesScreenshot) DriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Adım Ekran Görüntüsü");
+            logger.info("📸 Screenshot alındı: {}", scenario.getName());
+        } catch (Exception e) {
+            logger.error("❌ Screenshot alınamadı: {}", e.getMessage());
+        }
+    }
+
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
@@ -29,7 +38,6 @@ public class Hooks {
             logger.info("✅ Test başarılı: {}", scenario.getName());
         }
 
-        // 👇 Tarayıcı açık kalsın mı? true ise kapatma
         boolean KEEP_BROWSER_OPEN = false;
         if (!KEEP_BROWSER_OPEN) {
             DriverFactory.quitDriver();
@@ -37,5 +45,4 @@ public class Hooks {
             logger.info("🟡 Tarayıcı açık bırakıldı (debug amaçlı).");
         }
     }
-
 }
