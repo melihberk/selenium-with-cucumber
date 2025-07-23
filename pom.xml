@@ -140,6 +140,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <includes>
+                        <include>**/TestRunner.java</include>
+                    </includes>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
                     </systemPropertyVariables>
